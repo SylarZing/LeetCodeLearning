@@ -11,4 +11,4 @@ class SolutionOfArray:
         print(arr)
 
         
-# SolutionOfArray.RemoveDuplicateItems()
+#  SolutionOfArray.RemoveDuplicateItems()
