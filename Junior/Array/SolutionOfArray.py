@@ -15,7 +15,7 @@ class SolutionOfArray:
     # 给定一个整数数组，判断是否存在重复元素。
     # 如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false。
     # Hint：使用集合元素的唯一性，判断放入集合后元素数量和遍历的次数是否一致
-    def ContainDuplicateItem(arr = [1,2,3,1]):
+    def ContainDuplicateItem1(arr = [1,2,3,1]):
         list = {arr[0]} 
         result = False
         for i in range(1, len(arr), 1):
@@ -23,6 +23,14 @@ class SolutionOfArray:
             if len(list) != i + 1:
                 result = True
                 break
+        print(result)
+    # Hint: 先排序再比较相邻 - **内存消耗较低
+    def ContainDuplicateItem2(arr = [1,2,3,1]):
+        arr.sort()
+        result = False
+        for i in range(1, len(arr), 1):
+            if(arr[i - 1] == arr[i]):
+                result = True
         print(result)
 
 
@@ -36,4 +44,6 @@ class SolutionOfArray:
 
         
 # SolutionOfArray.RemoveDuplicateItems()
-# SolutionOfArray.ContainDuplicateItem()
+
+# SolutionOfArray.ContainDuplicateItem1()
+# SolutionOfArray.ContainDuplicateItem2()
