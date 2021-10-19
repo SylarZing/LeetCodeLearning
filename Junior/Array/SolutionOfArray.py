@@ -78,7 +78,26 @@ class SolutionOfnumsay:
         index = k%len(nums)
         nums[:] = nums[-index:] + nums[:-index]
         
-
+    # ~~~~~两个数组的交集 II~~~~~
+    # 给定两个数组，编写一个函数来计算它们的交集。
+    # Hint: 先给数组排序，再双指针比较两个
+    def Intersect(nums1=[1,2,3,4,5,4], nums2=[2,3,4,4]):
+        list = []
+        nums1.sort()
+        nums2.sort()
+        i = 0
+        j = 0
+        while (i < len(nums1) and j < len(nums2)):
+            if (nums1[i] < nums2[j]):
+                i += 1
+            elif (nums1[i] > nums2[j]):
+                j += 1
+            else:
+                list.append(nums1[i])
+                i += 1
+                j += 1
+        print(list)
+        return list
 
         
     
@@ -100,3 +119,5 @@ class SolutionOfnumsay:
 # SolutionOfnumsay.MoveZero2()
 
 # SolutionOfnumsay.Rotate()
+
+# SolutionOfnumsay.Intersect()
