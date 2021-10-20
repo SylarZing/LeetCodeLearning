@@ -99,6 +99,32 @@ class SolutionOfnumsay:
         print(list)
         return list
 
+    # ~~~~~加一~~~~~
+    # 给定一个由 整数 组成的 非空 数组所表示的非负整数，在该数的基础上加一。
+    # 最高位数字存放在数组的首位，数组中每个元素只存储单个数字。
+    # 你可以假设除了整数 0 之外，这个整数不会以零开头。
+    # Hint: 主要注意进位情况 [9,9] + 1 = [1,0,0]; 反向遍历数组，若需要进位，则赋0并判断下一位，否则直接加一
+    def PlusOne(digits = [9]):
+        index = 0
+        for i in range(len(digits) - 1, -1, -1):
+            print(digits[i])
+            if (digits[i] == 9):
+                digits[i] = 0
+                index += 1
+            else:
+                digits[i] += 1
+                break
+        if (index == len(digits)):
+            digits.insert(0, 1)
+        print(digits)
+    
+    # ~~~~~两数之和~~~~~
+    # 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+    # 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+    # 你可以按任意顺序返回答案。
+    # Hint：
+    def TwoSum(nums = [1,2,3,4,5], target = 6):
+        return
         
     
     # 买卖股票的最佳时机
@@ -121,3 +147,6 @@ class SolutionOfnumsay:
 # SolutionOfnumsay.Rotate()
 
 # SolutionOfnumsay.Intersect()
+
+# SolutionOfnumsay.PlusOne()
+
