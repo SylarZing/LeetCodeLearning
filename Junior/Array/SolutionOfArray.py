@@ -1,4 +1,4 @@
-class SolutionOfnumsay:
+class SolutionOfArray:
     
     # ~~~~~删除排序数组中的重复项~~~~~
     # 给你一个有序数组 nums ，请你删除重复出现的元素，使每个元素只出现一次 ，返回删除后数组的新长度。
@@ -134,7 +134,45 @@ class SolutionOfnumsay:
         for i in range(len(nums) - 1, -1, -1):
             if (target - nums[i] in nums):
                 index = nums.index(target - nums[i])
+                print([i, index])
                 return[i, index]
+
+    # ~~~~~~旋转图像~~~~~~
+    # 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+    # 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。
+    # Hint: 先上线调换，再以对角线数据调换
+    def RotateImage1(matrix = [[1,2,3],[4,5,6],[7,8,9]]):
+        matrix.reverse()
+        for i in range(0, len(matrix)):
+            for j in range(i, len(matrix)):
+                temp = matrix[i][j]
+                matrix[i][j] = matrix[j][i]
+                matrix[j][i] = temp
+        print(matrix)
+    # Hint: 根据题目要求按层一次旋转，前一个点坐标(i,j)，后一个点坐标(j,max-i)
+    def RotateImage2(matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]):
+        max = len(matrix)
+        row = int(max / 2)
+        print(max)
+        for i in range(0,row):
+            j = i
+            while (j < max - i - 1):
+                times = 0
+                cur_i = i
+                cur_j = j
+                temp = matrix[cur_i][cur_j]
+                while(times<3):
+                    pre_i = max - 1 - cur_j
+                    pre_j = cur_i
+                    matrix[cur_i][cur_j] = matrix[pre_i][pre_j]
+                    cur_i = pre_i
+                    cur_j = pre_j
+                    times += 1
+                matrix[cur_i][cur_j] = temp
+                j += 1
+        print(matrix)
+        
+
 
         
     
@@ -145,21 +183,24 @@ class SolutionOfnumsay:
 
 
         
-# SolutionOfnumsay.RemoveDuplicateItems()
+# SolutionOfArray.RemoveDuplicateItems()
 
-# SolutionOfnumsay.ContainDuplicateItem1()
-# SolutionOfnumsay.ContainDuplicateItem2()
+# SolutionOfArray.ContainDuplicateItem1()
+# SolutionOfArray.ContainDuplicateItem2()
 
-# SolutionOfnumsay.SingleItem()
+# SolutionOfArray.SingleItem()
 
-# SolutionOfnumsay.MoveZero1()
-# SolutionOfnumsay.MoveZero2()
+# SolutionOfArray.MoveZero1()
+# SolutionOfArray.MoveZero2()
 
-# SolutionOfnumsay.Rotate()
+# SolutionOfArray.Rotate()
 
-# SolutionOfnumsay.Intersect()
+# SolutionOfArray.Intersect()
 
-# SolutionOfnumsay.PlusOne()
+# SolutionOfArray.PlusOne()
 
-# SolutionOfnumsay.TwoSum1()
-# SolutionOfnumsay.TwoSum2()
+# SolutionOfArray.TwoSum1()
+# SolutionOfArray.TwoSum2()
+
+# SolutionOfArray.RotateImage1()
+# SolutionOfArray.RotateImage2()
