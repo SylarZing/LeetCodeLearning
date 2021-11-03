@@ -172,6 +172,38 @@ class SolutionOfArray:
                 j += 1
         print(matrix)
 
+    # 有效的数独
+    # 请你判断一个 9x9 的数独是否有效。只需要 根据以下规则 ，验证已经填入的数字是否有效即可。
+    #   数字 1-9 在每一行只能出现一次。
+    #   数字 1-9 在每一列只能出现一次。
+    #   数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）
+    #   数独部分空格内已填入了数字，空白格用 '.' 表示。
+    # 一个有效的数独（部分已被填充）不一定是可解的。
+    # 只需要根据以上规则，验证已经填入的数字是否有效即可。 
+    # Hint: 将数独中所有的已填入数字分别放入行、列、9宫中，判断是否重复，若不重复，则返回True，否则返回False
+    def IsValidSudoku(self, board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]) -> bool:  
+        r = len(board)
+        c = len(board[0])
+        rows = [[]*9 for _ in range(9)]
+        columns = [[]*9 for _ in range(9)]
+        matrixes = [[]*9 for _ in range(9)]
+        for i in range(r):
+            for j in range(c):
+                tmp = board[i][j]
+                if not tmp.isdigit():
+                    continue
+                elif tmp in rows[i]:
+                    return False
+                elif tmp in columns[j]:
+                    return False
+                elif tmp in matrixes[(j // 3) * 3 + (i // 3)]:
+                    return False
+                else:
+                    rows[i].append(tmp)
+                    columns[j].append(tmp)
+                    matrixes[(j // 3) * 3 + (i // 3)].append(tmp)
+        return True
+
     # ~~~~~买卖股票的最佳时机~~~~~
     # 给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。
     # 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
@@ -220,5 +252,8 @@ class SolutionOfArray:
 # SolutionOfArray.RotateImage1()
 # SolutionOfArray.RotateImage2()
 
+# SolutionOfArray.IsValidSudoku()
+
 # SolutionOfArray.MaxProfit1()
 # SolutionOfArray.MaxProfit2()
+
