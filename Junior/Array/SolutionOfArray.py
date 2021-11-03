@@ -171,15 +171,30 @@ class SolutionOfArray:
                 matrix[cur_i][cur_j] = temp
                 j += 1
         print(matrix)
-        
 
-
-        
-    
-    # 买卖股票的最佳时机
+    # ~~~~~买卖股票的最佳时机~~~~~
     # 给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。
     # 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
     # 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+    # Hint: 递归运算，判断在过程中是否持有 最大价格，并确保最后要把股票卖掉。
+    def MaxProfit1(prices = [7,1,5,3,6,4]) -> int:
+        hold = -prices[0]
+        unhold = 0
+        for i in range(1, len(prices)):
+            unhold = max(unhold, hold + prices[i])
+            hold = max(hold, unhold - prices[i])
+        
+        print(unhold)
+        return unhold
+    # Hint: 贪心算法,只计算增长的阶段。
+    def MaxProfit2(prices = [7,1,5,3,6,4]) -> int:
+        price = 0
+        for i in  range(0, len(prices) - 1):
+            if (prices[i + 1] > prices[i]):
+                price = prices[i + 1] - prices[i] + price
+        
+        print(price)
+        return price
 
 
         
@@ -204,3 +219,6 @@ class SolutionOfArray:
 
 # SolutionOfArray.RotateImage1()
 # SolutionOfArray.RotateImage2()
+
+# SolutionOfArray.MaxProfit1()
+# SolutionOfArray.MaxProfit2()
