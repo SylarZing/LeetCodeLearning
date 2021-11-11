@@ -16,7 +16,7 @@ class SolutionOfString:
         return
 
     # ~~~~~整数翻转~~~~~
-    # link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnx13t/
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnx13t/
     # Hint: 利用求余,反算每一位数字
     def ReverseInt1(x = -12) -> int:
         result = 0
@@ -52,7 +52,18 @@ class SolutionOfString:
         else:
             return 0
 
+    # ~~~~~字符串中的第一个唯一字符~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn5z8r/
+    # Hint: 使用find和rfind
+    def FirstUniqChar(s = "loveleetcode") -> int:
+        for c in s:
+            if s.find(c) == s.rfind(c):
+                return s.find(c)
+        return -1
+
 # SolutionOfString.ReverseString()
 
 # SolutionOfString.ReverseInt1()
 # SolutionOfString.ReverseInt2()
+
+# SolutionOfString.FirstUniqChar()
