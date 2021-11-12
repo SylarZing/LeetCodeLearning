@@ -61,9 +61,35 @@ class SolutionOfString:
                 return s.find(c)
         return -1
 
+    # ~~~~~验证回文串~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xne8id/
+    # Hint: 双指针，同时正向反向对比字符
+    def IsPalindrome(s = "Level") -> bool:
+        if len(s) == 0:
+            return True
+        left = 0
+        right = len(s) - 1
+        while(left < right):
+            while(left < right and s[left].isalnum() == False):
+                left += 1
+            while(left < right and s[right].isalnum() == False):
+                right -= 1
+            if (s[left].lower() != s[right].lower()):
+                return False
+            left += 1
+            right -= 1
+        return True
+                
+            
+
+
+
+
 # SolutionOfString.ReverseString()
 
 # SolutionOfString.ReverseInt1()
 # SolutionOfString.ReverseInt2()
 
 # SolutionOfString.FirstUniqChar()
+
+# SolutionOfString.IsPalindrome()
