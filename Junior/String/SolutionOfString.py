@@ -79,6 +79,27 @@ class SolutionOfString:
             left += 1
             right -= 1
         return True
+     
+    # ~~~~~ 有效的字母异位词 ~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn96us/
+    # Hint: 利用Dictionary整理字符出现次数并比较
+    def IsAnagram(s = "aabc", t = "ccba") -> bool:
+        if (len(s) != len(t)):
+            return False
+        sDic = {}
+        tDic = {}
+        for i in range(0, len(s), 1):
+            if s[i] in sDic.keys():
+                sDic[s[i]] += 1
+            else:
+                sDic[s[i]] = 1
+        for i in range(0, len(t), 1):
+            if t[i] in tDic.keys():
+                tDic[t[i]] += 1
+            else:
+                tDic[t[i]] = 1
+        return sDic == tDic
+        
                 
             
 
@@ -93,3 +114,5 @@ class SolutionOfString:
 # SolutionOfString.FirstUniqChar()
 
 # SolutionOfString.IsPalindrome()
+
+# SolutionOfString.IsAnagram()
