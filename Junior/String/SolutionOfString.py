@@ -99,11 +99,44 @@ class SolutionOfString:
             else:
                 tDic[t[i]] = 1
         return sDic == tDic
+    
+    # ~~~~~ 字符串转换整数 (atoi) ~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnoilh/
+    # Hint: 按照题目要求依次判断
+    def MyAtoi(s = "42") -> int:
+        s = s.strip()
+        if (len(s) == 0):
+            return 0
+        str = ""
+        flag = True
+        index = 0
+
+        if (s[0] == '-'):
+            flag = False
+            index = 1
+        elif(s[0] == '+'):
+            flag = True
+            index = 1
+
+        for i in range(index, len(s)):
+            if (s[i].isnumeric()):
+                str = str + s[i]
+            else:
+                break
+        if (str == ""):
+            r = 0
+        else:
+            r = int(str)
+        print(str)
+        if flag:
+            if r > (2 ** 31) - 1:
+                return (2 ** 31) - 1
+            return r
+        else:
+            if r > 2 ** 31:
+                return 0 - (2 ** 31)
+            return 0 - r
         
-                
-            
-
-
 
 
 # SolutionOfString.ReverseString()
@@ -116,3 +149,5 @@ class SolutionOfString:
 # SolutionOfString.IsPalindrome()
 
 # SolutionOfString.IsAnagram()
+
+# SolutionOfString.MyAtoi()
