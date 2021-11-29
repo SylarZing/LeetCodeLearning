@@ -136,7 +136,25 @@ class SolutionOfString:
             if r > 2 ** 31:
                 return 0 - (2 ** 31)
             return 0 - r
+
+    # ~~~~~ 实现strStr() ~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnr003/
+    # Hint: 字符串截取匹配短的字符串
+    def strStr(haystack="aaaabb", needle="ab") -> int:
+        length = len(needle)
+        if (length == 0):
+            return 0
+        start = 0
+        total = len(haystack) - length + 1
+        for index in range(0, total):
+            if (haystack[index: index + length] == needle):
+                print(index)
+                return index
+        print(-1)
+        return -1
         
+        
+                    
 
 
 # SolutionOfString.ReverseString()
@@ -151,3 +169,5 @@ class SolutionOfString:
 # SolutionOfString.IsAnagram()
 
 # SolutionOfString.MyAtoi()
+
+# SolutionOfString.strStr()
