@@ -152,7 +152,32 @@ class SolutionOfString:
                 return index
         print(-1)
         return -1
+    
+    # ~~~~~ 最长公共前缀 ~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnmav1/
+    # Hint: 便利每个字符的前面每一位是否一致，当不一致则输出前面所有共同的前缀
+    def LongestCommonPrefix(strs = ["flower","flow","flight"]) -> str:
+        minLen = len(strs[0])
+        for s in strs:
+            if (minLen > len(s)):
+                minLen = len(s)
+        if (minLen == 0):
+            return ""
         
+        result = ""
+        index = 0
+        while(index < minLen):
+            char = strs[0][index]
+            for s in strs:
+                if (s[index] != char):
+                    if (index == 0):
+                        return ""
+                    else:
+                        print(strs[0][0:index])
+                        return strs[0][0:index]
+            index += 1
+        print(strs[0][0:index])
+        return strs[0][0:index]
         
                     
 
@@ -171,3 +196,5 @@ class SolutionOfString:
 # SolutionOfString.MyAtoi()
 
 # SolutionOfString.strStr()
+
+# SolutionOfString.LongestCommonPrefix()
