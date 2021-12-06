@@ -33,8 +33,8 @@ class SolutionOfDynamicPlanning:
 
     # ~~~~~买卖股票的最佳时机 I~~~~~
     # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn8fsh/
-    # Hint: 双游标
-    def MaxProfit1(prices = [2,4,1]) -> int:
+    # Hint: 双游标,一个记录当前最小值，同时记录一个当前最大利润（初始利润为0）
+    def MaxProfit1(prices = [2,4,5,1]) -> int:
         if (len(prices) == 0):
             return 0
         maxValue = 0
@@ -42,7 +42,6 @@ class SolutionOfDynamicPlanning:
         for index in range (1, len(prices)):
             minPrice = min(minPrice, prices[index])
             maxValue = max(maxValue, prices[index] - minPrice)
-            print(maxValue)
         return maxValue
 
         
