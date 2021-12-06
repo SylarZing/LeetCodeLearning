@@ -10,7 +10,31 @@ class SolutionOfDynamicPlanning:
             return 2
         else:
             return int((((1 + 5**0.5)/2)**(n + 1) - ((1 - 5**0.5)/2)**(n + 1))/(5**0.5))
+    
+    # Hint: 普通计算
+    def ClimbStairs2(n = 3) -> int:
+        if (n == 1):
+            return 1
+        else:
+            value = [0 for i in range(n + 1)]
+            value[1] = 1
+            value[2] = 2
+            for i in range (3,n + 1):
+                value[i] = value[i-1] + value[i-2]
+            return value[n]
+    
+    # Hint: 避免使用数组，使用三个数交替运算
+    def ClimbStairs3(n = 3) -> int:
+        i = 0
+        j = 1
+        for index in range(n):
+            k = i + j
+            i = j
+            j = k
+        return k
         
 
 
-SolutionOfDynamicPlanning.ClimbStairs1()
+# SolutionOfDynamicPlanning.ClimbStairs1()
+# SolutionOfDynamicPlanning.ClimbStairs2()
+# SolutionOfDynamicPlanning.ClimbStairs3()
