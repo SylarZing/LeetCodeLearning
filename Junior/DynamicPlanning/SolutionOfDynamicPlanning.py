@@ -1,5 +1,5 @@
 class SolutionOfDynamicPlanning:
-    
+
     # ~~~~~爬楼梯~~~~~
     # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xn854d/
     # Hint: 斐波那契数列 第n项通项公式
@@ -42,13 +42,36 @@ class SolutionOfDynamicPlanning:
         for index in range (1, len(prices)):
             minPrice = min(minPrice, prices[index])
             maxValue = max(maxValue, prices[index] - minPrice)
+        print(maxValue)
         return maxValue
-
+    # Hint:
+    def MaxProfit2(prices = [2,4,5,1]) -> int:
+        # dp[i][0] -- i + 1 天结束时候没股票时的最大收益
+        # dp[i][1] -- i + 1 天结束时候有股票时的最大收益
         
+        # dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
+        # dp[i][1] = max(dp[i-1][1], -prices[i])
+        # dp[0][0] = 0
+        # dp[0][1] = -prices[0]
+        length = len(prices)
+        if (length == 0):
+            return 0 
+        unhold = 0
+        hold = -prices[0]
+        for i in range(1,length):
+            unhold = max(unhold, hold + prices[i])
+            hold = max(hold, -prices[i])
+        print(unhold)
+        return unhold
+
+
+
+
 
 
 # SolutionOfDynamicPlanning.ClimbStairs1()
 # SolutionOfDynamicPlanning.ClimbStairs2()
 # SolutionOfDynamicPlanning.ClimbStairs3()
 
-SolutionOfDynamicPlanning.MaxProfit1()
+# SolutionOfDynamicPlanning.MaxProfit1()
+# SolutionOfDynamicPlanning.MaxProfit2()
