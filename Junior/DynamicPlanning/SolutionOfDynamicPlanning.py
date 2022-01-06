@@ -82,7 +82,27 @@ class SolutionOfDynamicPlanning:
             
         print(max(dp))
         return max(dp)
-        
+
+    # ~~~~~ 打家劫舍 ~~~~~
+    # Link: https://leetcode-cn.com/leetbook/read/top-interview-questions-easy/xnq4km/
+    # Hint: 动态规划
+    def Rob(nums = [2,7,9,3,1]) -> int:
+        length = len(nums)
+        # dp[i][0] -- i+1家没偷的最大值
+        # dp[i][1] -- i+1家偷了的最大值
+        # dp = [[0 for col in range(2)] for row in range(length)]
+        # print(dp)
+        # dp[0][0] = 0
+        # dp[0][1] = nums[0]
+        a = 0
+        b = nums[0]
+        for i in range(1, length):
+            temp = max(a, b)
+            b = a + nums[i]
+            a = temp
+        a =  max(a, b)
+        print(a)
+        return a
 
 
 
@@ -98,4 +118,6 @@ class SolutionOfDynamicPlanning:
 # SolutionOfDynamicPlanning.MaxProfit1()
 # SolutionOfDynamicPlanning.MaxProfit2()
 
-SolutionOfDynamicPlanning.MaxSubArray()
+# SolutionOfDynamicPlanning.MaxSubArray()
+
+# SolutionOfDynamicPlanning.Rob()
